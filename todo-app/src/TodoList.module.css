@@ -6,6 +6,7 @@
   overflow: hidden;
 }
 
+/* ต้องการ target childชั้นเดียว */
 .Root > :not(:last-child) {
   border-bottom: inherit;
 }
