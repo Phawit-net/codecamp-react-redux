@@ -70,13 +70,15 @@ class TodoList extends React.Component {
     })
   }
 
-  render = () => {
+  render = () => { 
     return( 
     <div className = {styles.Root}>
       <NewTodo value ={this.state.textValue} onValue={this.handleValue} onAdd = {this.handleAdd} onEnter ={this.handleEnter}/>
       {this.state.todos.map((todo,indx)=>(
         <Todo key = {indx} ticked = {todo.ticked} name ={todo.name} onDelete = {this.handleDelete(indx)} onTick = {this.handleTick(indx)} onWord={this.handleWord(indx)}/>
       ))}
+      {/* โดยปกติในJSX ไม่ให้เราใส่ onTick = {this.handleTick(indx)} ()ในfunction ไม่งั้นจะเป็นการรันfunctionแต่เราต้องการให้มันทำตอนกด eventและจะ ส่ง parameter จึงต้องใช้ high order function 
+          หรือ จะใส่ onDelete = {()=>this.handleDelete(indx)} เพื่อให้มันรอทำ function */}
     </div>
     )
   }
