@@ -30,7 +30,7 @@ class TodoList extends React.Component {
         })
     }
   }
-
+  
   handleAdd = (e)=>{   //แนะนำในให้ใช้setState แบบfunctionมากกว่า
     if (!this.state.textValue) return
     const {todos} = this.state
