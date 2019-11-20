@@ -8,14 +8,15 @@ import Todo from './components/Todo'
 class TodoList extends React.Component {
   state = {
     textValue: '',
-    todos: []
+    todos: [{ ticked: false, name: 'KILL DA BEECH' }]
   }
 
     componentDidMount = async () => {
+     console.log("Initialize") 
     try {
       const response = await fetch('http://localhost:3001/todos')
       const data = await response.json()
-      console.log(data)
+      // console.log(data)
 
       this.setState(state =>({
         todos:data.map(x=>x)
@@ -36,16 +37,16 @@ class TodoList extends React.Component {
   handleAdd = async() => {
     if (!this.state.textValue) return
     try {
-    console.log(this.state.textValue)
-    await fetch('http://localhost:3001/todos', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({
-        ticked: 'false',
-        name: this.state.textValue
-          })
-        }
-    )
+    // console.log(this.state.textValue)
+    // await fetch('http://localhost:3001/todos', {
+    //   method: 'POST',
+    //   headers: { 'content-type': 'application/json' },
+    //   body: JSON.stringify({
+    //     ticked: false,
+    //     name: this.state.textValue
+    //       })
+    //     }
+    // )
     } catch (err) {
       console.log(err)
     }
@@ -61,21 +62,6 @@ class TodoList extends React.Component {
   }
 
   handleTick = idx => async () => {
-    // await fetch('http://localhost:3001/todos/'+ this.state.todos[idx].id, {
-    //   method: 'PATCH',
-    //   headers: {'content-type': 'application/json'},
-    //   body: JSON.stringify({
-    //     ticked: this.state.todos[idx].ticked
-    //       })
-    //     })
-
-    console.log(this.state.todos[idx].ticked)
-    this.setState(state => ({
-      todos: state.todos.map((todo, todoIdx) =>
-        todoIdx === idx ? { ...todo, ticked: !todo.ticked } : todo
-      )
-    }))
-    
     await fetch('http://localhost:3001/todos/'+ this.state.todos[idx].id, {
       method: 'PATCH',
       headers: {'content-type': 'application/json'},
@@ -83,11 +69,37 @@ class TodoList extends React.Component {
         ticked: !(this.state.todos[idx].ticked)
           })
         })
-  
+
+    // console.log(this.state.todos[idx].ticked)
+    this.setState(state => ({
+      todos: state.todos.map((todo, todoIdx) =>
+        todoIdx === idx ? { ...todo, ticked: !todo.ticked } : todo
+      )
+    }))
+    
+    // await fetch('http://localhost:3001/todos/'+ this.state.todos[idx].id, {
+    //   method: 'PATCH',
+    //   headers: {'content-type': 'application/json'},
+    //   body: JSON.stringify({
+    //     ticked: !(this.state.todos[idx].ticked)
+    //       })
+    //     })
   }
+  
+  // componentDidUpdate= async (prevProps,prevState) => {
+  //   console.log("update")
+  //   console.log(prevState.todos.map(x => x.id))
+  //   await fetch('http://localhost:3001/todos/'+prevState.todos.map(x => x.id), {
+  //     method: 'PATCH',
+  //     headers: {'content-type': 'application/json'},
+  //     body: JSON.stringify({
+  //       ticked: prevState.todos.map(x => x.ticked)
+  //         })
+  //       })
+  // }
 
   handleDelete = idx => async() => {
-    console.log(this.state.todos[idx].id)
+    // console.log(this.state.todos[idx].id)
     await fetch('http://localhost:3001/todos/' + this.state.todos[idx].id, {
       method: 'DELETE',
       headers: {'content-type': 'application/json'},

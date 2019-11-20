@@ -1,14 +1,24 @@
 {
   "todos": [
     {
-      "ticked": "false",
-      "name": "234",
-      "id": 1
+      "id": "7HHAR",
+      "ticked": true,
+      "name": "Wash dishes"
     },
     {
-      "ticked": "false",
-      "name": "2342342",
-      "id": 2
+      "id": "x08Py",
+      "ticked": true,
+      "name": "Walk a dog"
+    },
+    {
+      "id": "gWSZn",
+      "ticked": true,
+      "name": "Buy soap"
+    },
+    {
+      "id": "Z3wsP",
+      "ticked": false,
+      "name": "Buy food"
     }
   ]
 }
