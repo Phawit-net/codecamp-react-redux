@@ -2,7 +2,7 @@
   "todos": [
     {
       "id": "7HHAR",
-      "ticked": true,
+      "ticked": false,
       "name": "Wash dishes"
     },
     {
@@ -12,13 +12,18 @@
     },
     {
       "id": "gWSZn",
-      "ticked": true,
+      "ticked": false,
       "name": "Buy soap"
     },
     {
       "id": "Z3wsP",
       "ticked": false,
       "name": "Buy food"
+    },
+    {
+      "ticked": true,
+      "name": "cccc",
+      "id": "EcRmjjt"
     }
   ]
 }
